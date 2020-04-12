@@ -190,7 +190,10 @@ class MazeGenerator extends JPanel implements KeyListener{
         Graphics g = image.getGraphics();
         this.paint(g);
         try {
-            ImageIO.write(image, "png", new File("GeneratedMaze.png"));
+            String fileName;
+            if (pathFinder.isPathFound()) fileName = "SolvedMaze.png";
+            else fileName = "GeneratedMaze.png";
+            ImageIO.write(image, "png", new File(fileName));
         } catch (Exception e) {
             e.printStackTrace();
         }
